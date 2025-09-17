@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>貪吃蛇</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <h1 class="title">貪吃蛇</h1>
+      <div class="scoreboard">分數：<span id="score">0</span></div>
+    </header>
+
+    <main class="game-container">
+      <canvas id="game" width="480" height="480" aria-label="Snake Game"></canvas>
+    </main>
+
+    <div id="overlay-start" class="overlay visible" role="dialog" aria-modal="true">
+      <div class="overlay-card">
+        <h2>玩法教學</h2>
+        <ul class="guide">
+          <li>使用方向鍵或 WASD 移動蛇。</li>
+          <li>吃到蘋果會加分並讓蛇變長。</li>
+          <li>撞到牆壁或自己的身體會遊戲結束。</li>
+        </ul>
+        <button id="btn-start" class="btn primary">開始遊戲</button>
+      </div>
+    </div>
+
+    <div id="overlay-gameover" class="overlay" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="overlay-card">
+        <h2>遊戲結束</h2>
+        <p>你的分數：<strong id="final-score">0</strong></p>
+        <div class="actions">
+          <button id="btn-restart" class="btn primary">重新開始</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
+
+
