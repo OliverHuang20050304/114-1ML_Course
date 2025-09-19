@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的日記</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📖 我的日記</h1>
+        </header>
+        
+        <div class="date-section">
+            <label for="datePicker">選擇日期：</label>
+            <input type="date" id="datePicker" class="date-input">
+        </div>
+        
+        <div class="diary-content">
+            <textarea 
+                id="diaryText" 
+                placeholder="在這裡寫下您今天的心情和想法..."
+                class="diary-textarea"
+            ></textarea>
+        </div>
+        
+        <div class="action-buttons">
+            <button id="saveBtn" class="btn save-btn">💾 儲存</button>
+            <button id="clearBtn" class="btn clear-btn">🗑️ 清除</button>
+        </div>
+        
+        <div class="status-message" id="statusMessage"></div>
+        
+        <!-- 日記列表區域 -->
+        <div class="diary-list-section">
+            <h2>📚 我的日記列表</h2>
+            <div class="diary-list" id="diaryList">
+                <!-- 日記列表項目將在這裡動態生成 -->
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

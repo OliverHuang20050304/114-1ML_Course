@@ -1,0 +1,423 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+    background-color: #f5f5dc; /* 米白色背景 */
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fefefe;
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8e8e8;
+}
+
+header h1 {
+    color: #8b4513;
+    font-size: 2.5em;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.date-section {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.date-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #666;
+    font-weight: 500;
+}
+
+.date-input {
+    padding: 12px 16px;
+    font-size: 1.1em;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.date-input:focus {
+    outline: none;
+    border-color: #8b4513;
+    box-shadow: 0 0 5px rgba(139, 69, 19, 0.3);
+}
+
+.diary-content {
+    margin-bottom: 25px;
+}
+
+.diary-textarea {
+    width: 100%;
+    height: 400px;
+    padding: 20px;
+    font-size: 1.1em;
+    font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    background-color: #fafafa;
+    color: #333;
+    resize: vertical;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    line-height: 1.8;
+}
+
+.diary-textarea:focus {
+    outline: none;
+    border-color: #8b4513;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(139, 69, 19, 0.2);
+}
+
+.diary-textarea::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 12px 24px;
+    font-size: 1.1em;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.save-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.save-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.clear-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.clear-btn:hover {
+    background-color: #da190b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.status-message {
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.status-message.show {
+    opacity: 1;
+}
+
+.status-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin: 0;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+    
+    .diary-textarea {
+        height: 300px;
+        font-size: 1em;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+/* 動畫效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* 日記列表樣式 */
+.diary-list-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #e8e8e8;
+}
+
+.diary-list-section h2 {
+    color: #8b4513;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.diary-list {
+    display: grid;
+    gap: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.diary-item {
+    background-color: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.diary-item:hover {
+    background-color: #f5f5f5;
+    border-color: #8b4513;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.diary-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.diary-date {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #8b4513;
+}
+
+.diary-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.diary-actions .btn {
+    padding: 6px 12px;
+    font-size: 0.9em;
+    min-width: auto;
+    border-radius: 6px;
+}
+
+.edit-btn {
+    background-color: #2196F3;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #1976D2;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+.diary-preview {
+    color: #666;
+    font-size: 0.95em;
+    line-height: 1.5;
+    max-height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.diary-preview:empty::before {
+    content: "（無內容）";
+    color: #999;
+    font-style: italic;
+}
+
+.empty-list {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 2px dashed #ddd;
+}
+
+/* 確認對話框樣式 */
+.confirm-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.confirm-dialog.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.confirm-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.confirm-title {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.confirm-message {
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.confirm-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.confirm-buttons .btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    min-width: 100px;
+}
+
+.confirm-yes {
+    background-color: #f44336;
+    color: white;
+}
+
+.confirm-yes:hover {
+    background-color: #d32f2f;
+}
+
+.confirm-no {
+    background-color: #6c757d;
+    color: white;
+}
+
+.confirm-no:hover {
+    background-color: #5a6268;
+}
+
+/* 響應式設計 - 日記列表 */
+@media (max-width: 768px) {
+    .diary-item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .diary-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    
+    .diary-actions .btn {
+        flex: 1;
+        max-width: 80px;
+    }
+    
+    .confirm-content {
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    .confirm-buttons {
+        flex-direction: column;
+    }
+    
+    .confirm-buttons .btn {
+        width: 100%;
+    }
+}
